@@ -1,0 +1,8 @@
+#config/routes
+main_index:
+    path: /
+    controller: App\Controller\MainController::index
+
+main_show:
+    path: /show/{id?}
+    controller: App\Controller\MainController::show
