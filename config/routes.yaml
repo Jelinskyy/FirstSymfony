@@ -3,6 +3,14 @@ main_index:
     path: /
     controller: App\Controller\MainController::index
 
-main_show:
-    path: /show/{id?}
-    controller: App\Controller\MainController::show
+post_index:
+    path: /post
+    controller: App\Controller\PostController::index
+
+post_create:
+    path: /post/create
+    controller: App\Controller\PostController::create
+
+post_show:
+    path: /post/{id}
+    controller: App\Controller\PostController::show
