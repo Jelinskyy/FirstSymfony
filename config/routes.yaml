@@ -1,16 +1,4 @@
-#config/routes
-main_index:
-    path: /
-    controller: App\Controller\MainController::index
-
-post_index:
-    path: /post
-    controller: App\Controller\PostController::index
-
-post_create:
-    path: /post/create
-    controller: App\Controller\PostController::create
-
-post_show:
-    path: /post/{id}
-    controller: App\Controller\PostController::show
+# config/routes.yaml
+controllers:
+    resource: '../src/Controller/'
+    type:     annotation

@@ -1,23 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container-fluid" style="width:80%;">
-    <h1>List of All Posts</h1>
-    <div class="row justify-content-center">
-        <table class="table table-striped">
-            <thead>
-                <td>ID</td>
-                <td>Title</td>
-            </thead>
-            <tbody>
-                {% for post in posts %}
-                    <tr>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.title }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    {% for messege in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ messege }}
+        </div>
+    {% endfor %}
+    <div class="container-fluid" style="width:80%;">
+        <h1>List of All Posts</h1>
+        <div class="row justify-content-center">
+            <table class="table table-striped">
+                <thead>
+                    <td>ID</td>
+                    <td>Title</td>
+                    <td>Action</td>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td><a href="{{ path('post_show', {id: post.id}) }}">{{ post.id }}</a></td>
+                            <td class="px-0">{{ post.title }}</td>
+                            <td class="px-0">
+                                <form class="form-group" action="{{ path('post_delete', { id: post.id }) }}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <div class="col-2 ml-0 pl-0">
+                                        <input class="form-control is-invalid" type="submit" value="delete">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 {% endblock %}

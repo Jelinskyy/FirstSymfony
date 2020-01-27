@@ -9,8 +9,11 @@ use App\Repository\PostRepository;
 
 class MainController extends AbstractController
 {
+    /**
+    * @Route("/", name="index")
+    */
     public function index()
     {
-        return $this->render("main/index.html.twig", compact('posts'));
+        return $this->render("main/index.html.twig");
     }
 }
