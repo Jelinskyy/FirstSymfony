@@ -8,6 +8,8 @@ use App\Entity\Post;
 use App\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use App\Form\PostType;
+use Symfony\Component\HttpFoundation\Request;
 
 class PostController extends AbstractController
 {
@@ -23,18 +25,31 @@ class PostController extends AbstractController
     }
 
     /**
-    * @Route("/post/create", name="post_create")
+    * @Route("/create", name="post_create")
     */
-    public function create()
+    public function create(Request $request)
     {
         $post = new Post();
-        $post->setTitle('new Title');
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($post);
-        $em->flush();
+        $form = $this->createForm(PostType::class, $post);
 
-        return new Response('post was created');
+        $form->handleRequest($request);
+
+        if($form->isSubmitted())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em -> persist($post);
+            $em -> flush();
+
+            $this->addFlash('success', "post: {$post->getTitle()}, was created");
+            return $this->redirect($this->generateUrl("post_index"));
+        }
+
+
+        return $this->render('post/create.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 
     /**
