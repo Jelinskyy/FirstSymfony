@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PostController extends AbstractController
 {
     /**
-    * @Route("/post", name="post_index")
+    * @Route("/", name="post_index")
     */
     public function index(PostRepository $postRepository)
     {
