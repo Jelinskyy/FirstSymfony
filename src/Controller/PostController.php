@@ -39,6 +39,20 @@ class PostController extends AbstractController
         {
             $em = $this->getDoctrine()->getManager();
 
+            /** @var UploadedFile $file */
+            $file = $request->files->get('post');
+            $file = $file['attachment'];
+
+            if ($file) {
+                $filename = md5(uniqid()) . '.' . $file->guessClientExtension();
+                $file->move(
+                    $this->getParameter('uploads_dir') ,
+                    $filename
+                );
+
+                $post->setImage($filename);
+            }
+
             $em -> persist($post);
             $em -> flush();
 
@@ -58,8 +72,6 @@ class PostController extends AbstractController
     */
     public function show(Post $post)
     {
-        dd($post);
-
         return $this->render('post/show.html.twig', compact('post'));
     }
     /**

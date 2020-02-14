@@ -21,6 +21,11 @@ class Post
      */
     private $Title;
 
+    /**
+     * @ORM\Column(type="string", length=120)
+     */
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Post
     public function setTitle(string $Title): self
     {
         $this->Title = $Title;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
