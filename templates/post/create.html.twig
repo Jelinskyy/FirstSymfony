@@ -5,17 +5,26 @@
         <div class="row justify-content-center">
             <div class="col-4 justify-content-center">
                 {{ form_start(form) }}
+
                 <div class="row form-group">
                         {{ form_label(form.Title) }}
                         {{ form_widget(form.Title) }}
                 </div>
+
+                <div class="row form-group">
+                        {{ form_label(form.category) }}
+                        {{ form_widget(form.category) }}
+                </div>
+
                 <div class="row form-group">
                         {{ form_label(form.attachment) }}
                         {{ form_widget(form.attachment) }}
                 </div>
+
                 <div class="row form-group justify-content-center">
                         {{ form_widget(form.save) }}
                 </div>
+
                 {{ form_end(form) }}
             </div>
         </div>

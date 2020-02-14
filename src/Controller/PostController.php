@@ -70,8 +70,12 @@ class PostController extends AbstractController
     * @Route("/show/{id}", name="post_show")
     * @ParamConverter("post", class="App\Entity\Post")
     */
-    public function show(Post $post)
+    public function show($id, PostRepository $postRepository)
     {
+        $post = $postRepository->findPostWithCategory($id);
+
+        dd($post);
+
         return $this->render('post/show.html.twig', compact('post'));
     }
     /**
