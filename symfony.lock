@@ -222,9 +222,6 @@
     "symfony/options-resolver": {
         "version": "v5.0.3"
     },
-    "symfony/orm-pack": {
-        "version": "v1.0.7"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.13.1"
     },
@@ -236,12 +233,6 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.13.1"
-    },
-    "symfony/process": {
-        "version": "v5.0.2"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.4"
     },
     "symfony/property-access": {
         "version": "v5.0.3"
@@ -310,9 +301,6 @@
             "./templates/base.html.twig"
         ]
     },
-    "symfony/twig-pack": {
-        "version": "v1.0.0"
-    },
     "symfony/var-dumper": {
         "version": "v5.0.2"
     },
@@ -332,15 +320,6 @@
             "./config/packages/test/web_profiler.yaml",
             "./config/routes/dev/web_profiler.yaml"
         ]
-    },
-    "symfony/web-server-bundle": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
-        }
     },
     "symfony/yaml": {
         "version": "v5.0.2"
